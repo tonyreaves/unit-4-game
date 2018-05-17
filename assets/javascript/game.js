@@ -55,7 +55,7 @@ $("#crystal4").on("click", function(){
   gameScore = (gameScore + crystalValues[3]);
 })
 
-$('#crystal').click(function() {
+$('#crystals').click(function() {
   new Audio(audio).play(); 
 });
 
