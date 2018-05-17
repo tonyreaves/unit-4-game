@@ -4,21 +4,30 @@
 <head>
 <title>Crystal Collector!</title>
 <link ref="stylesheet" type="css/text" href="assets/css/reset.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.3.0/animate.css">
 <link ref="stylesheet" type="css/text" href="assets/css/style.css">
-<script src="assets/javascript/game.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
 
-    <header><h1>Welcome to Crystal Collector!</h1></header>
+    <header><h1 class="wow bounceInDown center">Welcome to Crystal Collector!</h1></header>
 
-You need to reach <span id="number-target"></span> to win.
+<h4>You need to reach <span id="number-target" style="color: red;font-size: 22px;"></span> to win this round. Crystal values are random and change every round.</h4>
 
+<h3>Total score: <span id="gameScore" style="color: red;font-size: 22px;"></span></h3>
 
-<div id="crystals"></div>
+<div id="crystals">
+    <img id="crystal" class="span3 wow pulse center" src="assets/images/crystal1.jpg">
+    <img id="crystal" class="span3 wow pulse center" src="assets/images/crystal2.jpg">
+    <img id="crystal" class="span3 wow pulse center" src="assets/images/crystal3.jpg">
+    <img id="crystal" class="span3 wow pulse center" src="assets/images/crystal4.jpg">
+</div>
 
-
+<h3>Wins:<span id="wins"></span> 
+   <br> Losses:<span id="losses"></span></h3>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script src="assets/javascript/game.js"></script>
 </body>
 
 </html>
