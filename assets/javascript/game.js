@@ -18,21 +18,26 @@ var wins = 0;
 var losses = 0;
 
 //array of crystal values
-var crystalValues = [0,0,0,0]
+var crystalValues = [5,2,0,0]
 
 var audio = "assets/images/click.mp3"
 
 //function to add random numbers to array
 function resetValues() {for (i = 0; i < crystalValues.length; i++) {(function getRandomArbitrary(min, max) {
-  return Math.floor(Math.random() * (10 - 1) + 1);})
+  return Math.floor(Math.random() * (9 - 1) + 1);})
 }
-crystalValues.push(this)
-return crystalValues;
-console.log(this)}
+return []}
 
-resetValues();
+//function to 
+function pushValues() {
+  crystalValues.push(resetValues);
+  return crystalValues;
+}
 
+pushValues(resetValues());
+console.log(crystalValues)
 
+//enters stats on page with jQuery
 $("#number-target").text(targetNum);
 $("#gameScore").text(gameScore);
 $("#wins").text(wins);
@@ -40,38 +45,37 @@ $("#losses").text(losses);
 
 //selector and click event for crystals
 $("#crystal1").on("click", function(){
-  gameScore = (gameScore + crystalValues[0]);
+  var gameScore = (gameScore + crystalValues[0]);
 })
 
 $("#crystal2").on("click", function(){
-  gameScore = (gameScore + crystalValues[1]);
+  var gameScore = (gameScore + crystalValues[1]);
 })
 
 $("#crystal3").on("click", function(){
-  gameScore = (gameScore + crystalValues[2]);
+  var gameScore = (gameScore + crystalValues[2]);
 })
 
 $("#crystal4").on("click", function(){
-  gameScore = (gameScore + crystalValues[3]);
+  var gameScore = (gameScore + crystalValues[3]);
 })
 
 $('#crystals').click(function() {
   new Audio(audio).play(); 
 });
 
-console.log(crystalValues)
-
 //win condition, effects
 if (gameScore === targetNum) {
     alert("You win!");
-    resetValues();
+    wins++;
+    pushValues();
   }
 
 //lose condition, effects
   else if (gameScore >= targetNum) {
     alert("You lose :(");
-    resetValues();
+    losses++;
+    pushValues();
   }
-
 
 })
