@@ -62,9 +62,6 @@ $(document).ready(function () {
       crystalValues.length = 0;
       theGame();
     }
-
-    //checking on things
-    console.log({ gameScore, targetNum});
   }
 
   //selector and click event for crystals

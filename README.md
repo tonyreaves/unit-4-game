@@ -1,1 +1,2 @@
 # unit-4-game
+Each time you load the game, the four crystals will have new, random values between 1 and 12. There is a target number you must hit without going over, like Blackjack. Go over and you lose. The game logs your wins and losses.
