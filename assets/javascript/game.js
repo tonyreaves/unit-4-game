@@ -2,70 +2,56 @@
 
 $(document).ready(function () {
   new WOW().init();
+//establish variables
 
   var wins = 0;
   var losses = 0;
-
-  //array of crystal values
   var crystalValues = [];
-
-  var gameScore
-
-  var targetNum
-
+  var gameScore;
+  var targetNum;
 
   //clicking noise
   var audio = "assets/images/click.mp3";
   $('#crystals').click(function () {
     new Audio(audio).play();
-
-    //the game
-    var theGame = function () {
-
-      //establish the main variables
-
-      //player score
-      var gameScore = 0;
-
-      //the target number you're trying to hit
-      targetNum = (function getRandomArbitrary() {
-        return Math.floor(Math.random() * (120 - 19) + 19);
-      })();
-
-      //function to add random numbers to array
-      function resetValues() {
-        for (i = 0; i < 4; i++) {
-          var randos = Math.floor(Math.random() * (9 - 1) + 1);
-          crystalValues.push(randos);
-          gameScore = 0;
-          console.log("it ran")
-          console.log({ randos, crystalValues, gameScore })
-        }
-      }
-
-      console.log(crystalValues);
-
-      //enters stats on page with jQuery
-      $("#gameScore").text(gameScore);
-      $("#number-target").text(targetNum);
-      $("#wins").text(wins);
-      $("#losses").text(losses);
-    }
-
-    theGame();
-
   })
 
+  //resets the values, sets stats
+  var theGame = function () {
 
-  //checks whether you've won
+    //the target number you're trying to hit
+    targetNum = (function getRandomArbitrary() {
+      return Math.floor(Math.random() * (120 - 19) + 19);
+    })();
+
+    //function to add random numbers to array
+    for (i = 0; i < 4; i++) {
+      var randos = Math.floor(Math.random() * (12 - 1) + 1);
+      crystalValues.push(randos);
+      gameScore = 0;
+    }
+
+    //console.log to cheat
+    console.log(crystalValues);
+
+    //enters stats on page with jQuery
+    $("#gameScore").text(gameScore);
+    $("#number-target").text(targetNum);
+    $("#wins").text(wins);
+    $("#losses").text(losses);
+  }
+
+  //call the function
+  theGame();
+
+  //checks whether you've won, tells you, resets the score, clears the array, 
   function checkWinCondition() {
     if (gameScore === targetNum) {
       alert("You win!");
       wins++;
       gameScore = 0;
+      crystalValues.length = 0;
       theGame();
-      $("#gameScore").text(gameScore);
-      $("#number-target").text(targetNum);
     }
 
     //lose condition, effects
@@ -73,13 +59,14 @@ $(document).ready(function () {
       alert("You lose!");
       losses++;
       gameScore = 0;
+      crystalValues.length = 0;
       theGame();
-      $("#gameScore").text(gameScore);
-      $("#number-target").text(targetNum);
     }
 
-    console.log({ gameScore, targetNum, wins, losses });
+    //checking on things
+    console.log({ gameScore, targetNum});
   }
+
   //selector and click event for crystals
   $("#crystal1").on("click", function () {
     gameScore = (gameScore + crystalValues[0]);
@@ -104,9 +91,5 @@ $(document).ready(function () {
     $("#gameScore").text(gameScore);
     checkWinCondition();
   })
-
-
-
-
 
 });
