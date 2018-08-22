@@ -2,15 +2,15 @@
 
 $(document).ready(function () {
   new WOW().init();
+  
 //establish variables
-
   var wins = 0;
   var losses = 0;
   var crystalValues = [];
   var gameScore;
   var targetNum;
 
-  //clicking noise
+  //noise on click
   var audio = "assets/images/click.mp3";
   $('#crystals').click(function () {
     new Audio(audio).play();
@@ -19,7 +19,7 @@ $(document).ready(function () {
   //resets the values, sets stats
   var theGame = function () {
 
-    //the target number you're trying to hit
+   //the target number you're trying to hit
     targetNum = (function getRandomArbitrary() {
       return Math.floor(Math.random() * (120 - 19) + 19);
     })();
